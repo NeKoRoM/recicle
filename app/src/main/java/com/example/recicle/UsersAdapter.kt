@@ -23,6 +23,7 @@ interface UserActionListener{
 
 class UsersAdapter(private val actionListener: UserActionListener): RecyclerView.Adapter<UsersAdapter.UsersViewHolder>(), View.OnClickListener {
 
+
     var users: List<User> = emptyList()
         set(newValue){
             field = newValue
