@@ -1,4 +1,4 @@
-package com.example.screens
+package com.example.recicle.screens
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -9,10 +9,14 @@ class ViewModelFactory(
     private val app: App
 ):ViewModelProvider.Factory{
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        val viewModel:UserListViewModel = when(modelClass){
-            UserListViewModel::class.java -> {
-                UserListViewModel(app.userService)
-            }else ->{
+        val viewModel: ViewModel = when(modelClass){
+            UsersListViewModel::class.java -> {
+                UsersListViewModel(app.userService)
+            }
+            UserDetailsViewModel::class.java -> {
+                UserDetailsViewModel(app.userService)
+            }
+            else ->{
                 throw IllegalStateException("Unknown view model class")
 
             }

@@ -1,9 +1,10 @@
-package com.example.screens
+package com.example.recicle.screens
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -21,7 +22,7 @@ class UserListFragment: Fragment() {
     private lateinit var binding: FragmentUsersListBinding
     private lateinit var adapter: UsersAdapter
 
-    private val viewModel: UserListViewModel by viewModels{factory()}
+    private val viewModel: UsersListViewModel by viewModels{factory()}
 
 
     override fun onCreateView(
@@ -44,7 +45,10 @@ class UserListFragment: Fragment() {
             }
 
         })
+
         viewModel.users.observe(viewLifecycleOwner, Observer {
+          //  Toast.makeText(activity, "User: ", Toast.LENGTH_SHORT).show()
+
             adapter.users = it
         })
         val layoutManager = LinearLayoutManager(requireContext())
